@@ -8,7 +8,8 @@ USER root
 ADD HDP.repo /etc/yum.repos.d/HDP.repo
 ADD HDP-UTILS.repo /etc/yum.repos.d/HDP-UTILS.repo
 
-RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm
+RUN rpm -iUvh http://mirrors.aliyun.com/repo/epel-7.repo
+# RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm
 # install dev tools
 RUN yum clean all; \
     rpm --rebuilddb; \
