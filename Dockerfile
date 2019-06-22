@@ -8,7 +8,10 @@ USER root
 ADD HDP.repo /etc/yum.repos.d/HDP.repo
 ADD HDP-UTILS.repo /etc/yum.repos.d/HDP-UTILS.repo
 
-RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm
+#RUN rpm -iUvh http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-7.noarch.rpm
+RUN rpm -iUvh https://mirrors.aliyun.com/epel/epel-release-latest-7.noarch.rpm
+
+
 # install dev tools
 RUN yum clean all; \
     rpm --rebuilddb; \
@@ -28,7 +31,8 @@ RUN yum install -y hbase tez hadoop snappy snappy-devel hadoop-libhdfs ambari-lo
 RUN yum -y remove java*
 
 # java
-RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
+#RUN curl -LO 'http://download.oracle.com/otn-pub/java/jdk/7u71-b14/jdk-7u71-linux-x64.rpm' -H 'Cookie: oraclelicense=accept-securebackup-cookie'
+RUN curl -LO 'https://mirror.its.sfu.ca/mirror/CentOS-Third-Party/RCG/common/x86_64/jdk-7u71-linux-x64.rpm'
 RUN rpm -i jdk-7u71-linux-x64.rpm
 RUN rm jdk-7u71-linux-x64.rpm
 
